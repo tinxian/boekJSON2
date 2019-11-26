@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <meta charset="utf-8">
+    <title>Sorteer boeken | Tin Xian</title>
+    <meta name="author" content="Tin Xian Hu">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body lang="nl">
+    <h1>Een selectie van boeken</h1>
+    <select id="kenmerk">
+      <option value="titelUpper" selected>Titel</option>
+      <option value="auteur">Auteur(s)</option>
+      <option value="Datums">Datum Uitgave</option>
+      <option value="paginas">Aantal Bladzijden</option>
+      <option value="Taal">Taal</option>
+      <option value="prijs">Prijs</option>
+    </select>
+
+    <!-- radiobuttons voor oplopend en aflopend sorteren -->
+    <label><input type="radio" name="lopend" value="1" checked="checked">oplopend</label>
+    <label><input type="radio" name="lopend" value="-1">aflopend</label>
+    <div id="uitvoer"></div>
+    <script src="shopBoeken.js" charset="utf-8"></script>
+  </body>
+</html>
