@@ -9,6 +9,8 @@ xmlhttp.onreadystatechange = function() {
       // daarop kan dan gesorteerd worden
       sorteerBoek.data.forEach( boek => {
          boek.titelKap = boek.titel.toUpperCase();
+         // ook de achter(naam) van de eerste auteur als eigenschap in data toevoegen
+         boek.sorteerAuteur = boek.auteur[0];
       })
       sorteerBoek.sorteren();
    }
@@ -29,7 +31,7 @@ const TabelKop = (arr) => {
 
 
 // functie maakt van een array een opsomming met ', ' en ' en '
-const Opsomming = (array) => {
+const opsomming = (array) => {
    let string = "";
    for(let i=0; i<array.length; i++) {
       switch (i) {
@@ -129,6 +131,12 @@ let sorteerBoek = {
          titel.className = 'boekSelectie__titel';
          titel.textContent = keerTekstOm(boek.titel);
 
+         // auteurs toevoegen
+         let auteurs = document.createElement('p');
+         auteurs.className = 'boekSelectie__auteurs';
+         boek.auteur[0] = keerTekstOm(boek.auteur[0]);
+         auteurs.textContent = opsomming(boek.auteur);
+
          // prijs toevoegen aan de webshop
          let prijs = document.createElement('div');
          prijs.className = 'boekSelectie__prijs';
@@ -137,6 +145,7 @@ let sorteerBoek = {
          // de element toevoegen
          sectie.appendChild(afbeelding);
          main.appendChild(titel);
+         main.appendChild(auteurs);
          sectie.appendChild(main);
          sectie.appendChild(prijs);
          document.getElementById('uitvoer').appendChild(sectie);
