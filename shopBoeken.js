@@ -134,18 +134,26 @@ let sorteerBoek = {
          // auteurs toevoegen
          let auteurs = document.createElement('p');
          auteurs.className = 'boekSelectie__auteurs';
+         // de voor en achternaam van de auteur omdraaien
          boek.auteur[0] = keerTekstOm(boek.auteur[0]);
+         // auteurs staan in een array omzetten naar tekst.
          auteurs.textContent = opsomming(boek.auteur);
+
+         // overige info toevoegen
+         let overig = document.createElement('p');
+         overig.className = 'boekSelectie__overig';
+         overig.textContent = 'datum: ' + boek.uitgave + ' | aantal bladzijden' + boek.paginas + ' | taal: ' + boek.taal + ' | ean: ' + boek.ean;
 
          // prijs toevoegen aan de webshop
          let prijs = document.createElement('div');
          prijs.className = 'boekSelectie__prijs';
-         prijs.textContent = '€ ' + boek.prijs;
+         prijs.textContent = boek.prijs.toLocaleString('nl-NL', {currency: 'EUR', style: 'currency'});
 
          // de element toevoegen
          sectie.appendChild(afbeelding);
          main.appendChild(titel);
          main.appendChild(auteurs);
+         main.appendChild(overig);
          sectie.appendChild(main);
          sectie.appendChild(prijs);
          document.getElementById('uitvoer').appendChild(sectie);
